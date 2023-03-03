@@ -10,7 +10,7 @@ public class TimerController : MonoBehaviour
     Slider slider;
 
     [SerializeField]
-    float maximumTime = 60.0F;
+    float maximumTime = 180.0F;
 
     float currentTime = 0.0F;
 
