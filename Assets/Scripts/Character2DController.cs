@@ -47,6 +47,8 @@ public class Character2DController : MonoBehaviour
     bool isMoving;
     bool isJumpPressed;
 
+    public StarManager sm;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -149,5 +151,14 @@ public class Character2DController : MonoBehaviour
             Physics2D.OverlapCapsule
             (groundCheck.position, new Vector2(0.75F, 0.02F), 
                 CapsuleDirection2D.Horizontal, 0.0F, groundMask);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Star"))
+        {
+            Destroy(other.gameObject);
+            sm.starCount++;
+        }
     }
 }
