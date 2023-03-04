@@ -49,6 +49,12 @@ public class Character2DController : MonoBehaviour
 
     public StarManager sm;
 
+    public Animation anim;
+
+    public Transform KeyFollowPoint;
+
+    public key followingKey; 
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
