@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class Chest : MonoBehaviour
 {
     private Character2DController Player;
+    
+    LevelManager levelManager;
+
+    void Awake()
+    {
+        levelManager = FindObjectOfType<LevelManager>();
+    }
 
     void Start()
     {
@@ -24,8 +31,14 @@ public class Chest : MonoBehaviour
             if (Player.followingKey != null) 
             {
                 Player.followingKey.followTarget = transform;
-                SceneManager.LoadScene("Level 3");
+                StartCoroutine(DelayCoroutine(1.50F));                
             }
         }
+    }
+
+    IEnumerator DelayCoroutine(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        levelManager.NextScene();
     }
 }
