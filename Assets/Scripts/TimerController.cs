@@ -16,6 +16,14 @@ public class TimerController : MonoBehaviour
 
     bool timerEnabled;
 
+    LevelManager levelManager;
+
+    void Awake()
+    {
+        levelManager = FindObjectOfType<LevelManager>();
+
+    }
+
     void Start()
     {
         ActivateTimer();
@@ -54,6 +62,7 @@ public class TimerController : MonoBehaviour
         {
             // El personaje debe morir => Game Over
             EnableTimer(false);
+            levelManager.LastScene();
         }
     }
 }
